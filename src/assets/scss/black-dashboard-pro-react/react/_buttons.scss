@@ -1,0 +1,22 @@
+.btn {
+  & + .btn {
+    margin-left: 4px;
+  }
+}
+.btn-group + .btn-group {
+  margin-left: 4px;
+}
+.btn-xs {
+  padding: 0.5rem 0.5rem;
+  font-size: 0.7rem;
+  line-height: 1;
+  border-radius: 0.2rem;
+  background: rgb(25, 174, 202);
+}
+.btn-xs-x {
+  padding: 0.2rem 0.2rem;
+  font-size: 0.7rem;
+  line-height: 1;
+  border-radius: 0.2rem;
+  background: rgb(25, 174, 202);
+}

@@ -1,0 +1,24 @@
+.card.card-lasthalf{
+    .card-body {
+      padding-left: 0;
+      padding-right: 0;
+  
+    }
+      .lasthalf {
+          list-style: none;
+          padding: 10px 0 20px;
+          position: relative;
+  
+          &:before {
+              top: 0;
+              bottom: 0;
+              position: absolute;
+              content: " ";
+              width: 3px;
+              background-color: $black;
+              left: 5%;
+              margin-left: -1.5px;
+          }
+        }
+    
+    }
