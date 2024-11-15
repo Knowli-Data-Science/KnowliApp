@@ -1,53 +1,36 @@
 import { React, useState } from "react"
 import {
-    Badge,
     Card,
     CardBody,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
-    UncontrolledDropdown,
+    CardHeader,
     Row,
     Col,
     Button,
-    CardHeader,
-    CardFooter,
-    CardImg,
-    CardTitle,
-    Label,
     FormGroup,
-    Form,
+    CustomInput,
     Input,
     InputGroup,
     InputGroupAddon,
     InputGroupText,
-    CustomInput,
-    ListGroupItem,
-    ListGroup,
-    Table,
-    UncontrolledTooltip,
+
+
 } from "reactstrap";
-import CustomTable from "views/components/CustomTable";
+
 import RedactionFormLg from "views/components/RedactFormLg";
 
-import ReactTable from "components/ReactTable/ReactTable.js"
-import VaultTable from "views/components/VaultTable";
-import DragNDrop from "views/components/DragNDrop";
-import RedactionForm from "views/components/RedactForm";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faThin, faEye } from '@fortawesome/free-solid-svg-icons'
-import icons from 'variables/icons';
-import { PiSparkle } from "react-icons/pi";
+import { AiOutlineCheckCircle, AiOutlineCloudUpload } from "react-icons/ai";
+import { IoFolderOutline } from "react-icons/io5";
+import CustomTablePg from "views/components/CustomTablePg";
 
 
 import VerticalLine from "views/components/VerticalLine";
-import logo from "assets/img/Upload.png";
+// import logo from "assets/img/Upload.png";
 
 
 
 const DocumentUpload = () => {
     const [withRedactions, setWithRedactions] = useState(false);
-
+    const [searchTerm, setSearchTerm] = useState("");
     const [selectedEntities, setSelectedEntities] = useState([]);
     const [customRedactions, setCustomRedactions] = useState([]);
     const [entities, setEntities] = useState([
@@ -69,6 +52,29 @@ const DocumentUpload = () => {
         { id: 16, label: 'Credit/Debit CVV', checked: false },
     ]);
 
+    const columns = [
+        { label: 'DOCUMENT', field: 'document', align: 'text-left' },
+        { label: 'TYPE', field: 'type', align: 'text-center' },
+        { label: 'VIEW', field: 'view', align: 'text-center' }
+    ];
+
+    const data = [
+        { document: 'Florida State Wheelchair', type: 'PDF', view: true },
+        { document: 'Texas State Report', type: 'DOC', view: true },
+        { document: 'California State Wheelchair', type: 'PDF', view: true },
+        { document: 'Indiana State Report', type: 'DOC', view: true },
+        { document: 'North Carolina State Wheelchair', type: 'PDF', view: true },
+        { document: 'New Mexico State Report', type: 'DOC', view: true },
+        { document: 'Arizona State Wheelchair', type: 'PDF', view: true },
+        { document: 'Oregon State Report', type: 'DOC', view: true },
+        { document: 'Illinois State Wheelchair', type: 'PDF', view: true },
+        { document: 'Tennessee State Report', type: 'DOC', view: true },
+        { document: 'Mississippi State Wheelchair', type: 'PDF', view: true },
+        { document: 'South Carolina State Report', type: 'DOC', view: true },
+        { document: 'Michigan State Wheelchair', type: 'PDF', view: true },
+        { document: 'Wisconsin State Report', type: 'DOC', view: true },
+        // Add more data rows as needed
+    ];
 
 
 
@@ -84,10 +90,10 @@ const DocumentUpload = () => {
                 <Row >
                     <Col lg="7" md="7" style={{ color: "0C80A4" }}>
                         <div className="header text-left" style={{ marginLeft: "10%", marginBottom: 0, marginTop: 0, paddingTop: 0 }}>
-                            <h4 style={{ color: "#19AECA", fontWeight: '400', letterSpacing: .15, fontFamily: "Helvetica" }}><i className={"tim-icons " + icons[24].name} style={{ color: "#19AECA", marginRight: 10, marginLeft: "-10%", fontWeight: 400, letterSpacing: .15, }} />  Document Upload</h4>
+                            <h4 style={{ color: "#19AECA", fontWeight: 'bold', letterSpacing: .15, fontFamily: "Helvetica" }}><AiOutlineCloudUpload fontSize={24} fontWeight={600} style={{ color: "#19AECA", marginRight: 10, marginLeft: "-10%", fontWeight: 400, letterSpacing: .15, }} />  Document Upload</h4>
                         </div>
                         <div className="header text-left" style={{ marginLeft: "0%", marginBottom: 0, marginTop: 0, paddingTop: 0 }}>
-                            <h5 style={{ color: "#334572", fontWeight: '400', letterSpacing: .15, fontFamily: "Helvetica" }}>  UPLOAD NEW DOCUMENT</h5>
+                            <h5 style={{ color: "#334572", fontWeight: 600, letterSpacing: .15, fontFamily: "Helvetica" }}>  UPLOAD NEW DOCUMENT</h5>
                         </div>
                         <Card className="card-timeline card-plain " style={{ marginTop: 0, paddingTop: 0, height: "73vh" }}>
                             <CardBody >
@@ -120,7 +126,8 @@ const DocumentUpload = () => {
                                             padding: '20px',
                                             textAlign: 'center',
                                             color: '#666',
-                                            width: "50%",
+                                            width: "95%",
+                                            background: "#eee"
 
                                         }}
                                     >
@@ -134,10 +141,44 @@ const DocumentUpload = () => {
 
                         </Card>
                     </Col>
-                    <Col lg="4" md="4">
+                    <Col className="text-center document-display" md="5" style={{marginLeft:"-10px"}} >
 
                         <VerticalLine color="#ccc" width="2px" ></VerticalLine>
-                        {/* <h1>This is document Vault</h1> */}
+
+                        <div className="header text-left" style={{ marginLeft: "10%", marginBottom: "6%" }}>
+                            <h4 style={{ marginBottom: "-20px", marginLeft: -30, fontWeight: "bold", letterSpacing: .15, color: "334572", fontFamily: "Helvetica" }}><IoFolderOutline fontWeight={600} fontSize={24} style={{ marginRight: 10 }} />Document Vault</h4>
+
+                        </div>
+                        <Card className="card-tasks text-left" style={{ background: `linear-gradient(to bottom, #344675 0%, #263148 100%)`, height: "100vh", borderBottomRightRadius: "15px" ,marginLeft: 20}}>
+                            <CardHeader>
+                                <Row>
+                                    <Col lg="6" md="5" sm="6" Style={{ marginRight: 0, paddingRight: 0 }}>
+
+                                        <h6 className="d-inline " style={{ color: 'white', opacity: .9, fontSize: "14px", letterSpacing: '.11', fontWeight: 300 }}>DOCUMENT LIBRARY</h6>
+                                    </Col>
+                                    <Col lg="6" md="7" sm="6">
+                                        <InputGroup>
+                                            <Input placeholder="Search"
+                                                className="input-gray-placeholder input-gray-text"
+                                                style={{ paddingLeft: "10px" }}
+                                                onChange={(e) => setSearchTerm(e.target.value)}>
+                                            </Input>
+                                            <InputGroupAddon addonType="append" className="input-gray-text">
+                                                <InputGroupText>
+                                                    <i className="tim-icons icon-zoom-split input-gray-text" style={{ paddingRight: 0 }}></i>
+                                                </InputGroupText>
+                                            </InputGroupAddon>
+
+                                        </InputGroup>
+                                    </Col>
+                                </Row>
+
+                            </CardHeader>
+                            <CardBody className="scroll-column" style={{ borderBottomRightRadius: "50px" }}>
+
+                                <CustomTablePg columns={columns} data={data} searchTerm={searchTerm} edit={true} itemsPerPage={10}/>
+                            </CardBody>
+                        </Card>
                     </Col>
 
 

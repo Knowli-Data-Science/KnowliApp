@@ -43,6 +43,8 @@ import Login from "views/pages/Login.js";
 import Rtl from "views/pages/Rtl.js";
 import DocumentVault from "views/pages/DocumentVault";
 import DocumentUpload from "views/pages/DocumentUpload";
+import IconGrid from "views/pages/Icons";
+import { PiSparkle } from "react-icons/pi";
 
 const routes = [
   {
@@ -55,31 +57,30 @@ const routes = [
   {
     path: "/document-vault",
     name: "DOCUMENT VAULT",
-    icon: "tim-icons icon-bank",
+    icon: "tim-icons icon-single-copy-04",
     component: <DocumentVault />,
     layout: "/admin",
   },
   {
-    path: "/dashboard",
+    path: "/advance-search",
     name: "ADVANCED SEARCH",
 
     icon: "tim-icons icon-spaceship",
-    component: <Dashboard />,
+    component: <IconGrid />,
     layout: "/admin",
   },
   {
     path: "/document-upload",
     name: "DOCUMENT UPLOAD",
 
-    icon: "tim-icons icon-chart-pie-36",
+    icon: "tim-icons icon-cloud-upload-94",
     component: <DocumentUpload />,
     layout: "/admin",
   },
   {
-    path: "/dashboard",
+    path: "/assistant",
     name: "ASSISTANT",
-
-    icon: "tim-icons icon-chart-pie-36",
+    icon: "tim-icons icon-bulb-63",
     component: <Dashboard />,
     layout: "/admin",
   },

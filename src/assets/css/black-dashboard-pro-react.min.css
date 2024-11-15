@@ -36381,7 +36381,7 @@ a.react-tagsinput .react-tagsinput-tag.neutral.focus {
   height: 22px;
   width: 45px;
   border: none;
-  background-image: green;
+  background-image: rgb(25, 174, 202);
   background-size: cover;
 }
 .custom-switch .custom-control-label::after {
@@ -36391,7 +36391,7 @@ a.react-tagsinput .react-tagsinput-tag.neutral.focus {
   transition: all 0.25s ease-out;
 }
 .custom-switch .custom-control-input:checked ~ .custom-control-label::before {
-  background-image: green;
+  background: rgb(25, 174, 202)
 }
 .custom-switch .custom-control-input:checked ~ .custom-control-label::after {
   background-color: #fff;

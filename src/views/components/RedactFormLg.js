@@ -3,7 +3,13 @@ import { React, useState } from 'react'
 import { FormGroup, Label, Input, Button, Row, Col } from 'reactstrap';
 import { Table } from 'reactstrap'
 import logo from "assets/img/Upload.png";
-
+import { CiTextAlignCenter } from "react-icons/ci";
+import { TfiList } from "react-icons/tfi";
+import { VscFolderLibrary } from "react-icons/vsc";
+import { IoFolderOutline } from "react-icons/io5";
+import { MdOutlineCloudUpload } from "react-icons/md";
+import { PiSparkle } from "react-icons/pi";
+import { faClipboard } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -83,16 +89,16 @@ const RedactionFormLg = ({ color, setSelectedEntities, setCustomRedactions, sele
         <div>
 
             <Label>Entities to redact</Label>
-            <Row className="justify-content-start" style={{ marginLeft: '15px', marginRight: '-5px', marginBottom:"100px"}}>
+            <Row className="justify-content-start" style={{ marginLeft: '15px', marginRight: '-5px', marginBottom:"10px"}}>
                 {entities.map((entity) => (
                     <Col lg="3" md="4" sm= "4" xs="6" key={entity.id} style={{ padding: '5px' }}>
-                        <FormGroup style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '3px' }}>
+                        <FormGroup style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '1px' }}>
                             <Input
                                 type="checkbox"
                                 checked={entity.checked}
                                 onChange={() => toggleEntity(entity.id)}
                                 className="checkbox-check"
-                                style={{ marginTop: '1px' }}
+                                style={{ marginTop: '0px' }}
                             />
                             <Label style={{ margin: 0, whiteSpace: 'normal', maxWidth: '100%', lineHeight: '1.2', fontSize:"11px", color:"#0C80A4" }}>
                                 {entity.label}
@@ -103,7 +109,7 @@ const RedactionFormLg = ({ color, setSelectedEntities, setCustomRedactions, sele
             </Row>
 
             <FormGroup>
-                <Label style={{ marginTop: '1rem' }}>Custom redactions</Label>
+                <Label style={{ marginTop: 0}}>Custom redactions</Label>
                 <Row form className="mb-2">
                     <Col md={5} sm={5} xs={5}>
                         <Input
@@ -111,6 +117,7 @@ const RedactionFormLg = ({ color, setSelectedEntities, setCustomRedactions, sele
                             placeholder="Word to redact"
                             value={newRedaction.word}
                             onChange={(e) => setNewRedaction({ ...newRedaction, word: e.target.value })}
+                            style={{background:"#eee"}}
                         />
                     </Col>
                     <Col md={5} sm={5} xs={5}>
@@ -119,17 +126,18 @@ const RedactionFormLg = ({ color, setSelectedEntities, setCustomRedactions, sele
                             placeholder="Replacement word"
                             value={newRedaction.replacement}
                             onChange={(e) => setNewRedaction({ ...newRedaction, replacement: e.target.value })}
+                            style={{background:"#eee"}}
                         />
                     </Col>
                     <Col md={2} sm={2} xs={2}>
-                        <Button color="primary" className="btn-sm" onClick={addCustomRedaction} >
+                        <Button  className="btn-sm btn-primary" onClick={addCustomRedaction} >
                             Add
                         </Button>
                     </Col>
                 </Row>
             </FormGroup>
 
-            <FormGroup style={{width:"50%"}}>
+            <FormGroup style={{width:"95%", marginRight:"10"}}>
                 <Label>Selected Redactions</Label>
                 <div style={{
                     border: '1px solid #ccc',
@@ -137,24 +145,25 @@ const RedactionFormLg = ({ color, setSelectedEntities, setCustomRedactions, sele
                     borderRadius: '4px',
                     minHeight: '80px',
                     maxHeight: '150px',
-                    overflowY: 'auto'
+                    overflowY: 'auto',
+                    background:"#eee"
                 }}>
                     {entities
                         .filter((entity) => entity.checked)
                         .map((entity) => (
                             <div key={entity.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0px 0px' ,fontSize:12 }}>
                                 <span>{entity.label}</span>
-                                <Button color="primary" className="btn-xs" onClick={() => removeRedaction(entity.label)}>
+                                <Button  className="btn-xs" onClick={() => removeRedaction(entity.label)}>
                                     &times;
                                 </Button>
                             </div>
                         ))}
                     {customRedactions.map((redaction, index) => (
-                        <div key={index} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '5px 0' , width:"50%"}}>
+                        <div key={index} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '5px 0' }}>
                             <span>
                                 {redaction.word} - replace with {redaction.replacement}
                             </span>
-                            <Button color="primary" className="btn-xs" onClick={() => removeRedaction(redaction.word)}>
+                            <Button  className="btn-xs" onClick={() => removeRedaction(redaction.word)}>
                                 &times;
                             </Button>
                         </div>

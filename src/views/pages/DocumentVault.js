@@ -90,7 +90,7 @@ const DocumentVault = () => {
         <Row >
           <Col lg="7" md="12">
             <div className="header text-left" style={{ marginLeft: "10%", marginBottom: 0, marginTop: 0, paddingTop: 0 }}>
-              <h4 style={{ color: "#19AECA", fontWeight: '400', letterSpacing: .15, fontFamily: "Helvetica" }}><i className="tim-icons icon-bank" style={{ color: "#19AECA", marginRight: 10, marginLeft: "-10%", fontWeight: 400, letterSpacing: .15, }} /> Document Vault</h4>
+              <h4 style={{ color: "#19AECA", fontWeight: 'bold', letterSpacing: .15, fontFamily: "Helvetica" }}><i className="tim-icons icon-single-copy-04" style={{ color: "#19AECA", marginRight: 10, marginLeft: "-10%", fontWeight: 600, fontSize:24}} /> Document Vault</h4>
             </div>
             <Card className="card-timeline card-plain scroll-column" style={{ marginTop: 0, paddingTop: 0, height: "100vh" }}>
               <CardBody >
@@ -124,7 +124,7 @@ const DocumentVault = () => {
           <Col className="text-center document-display"  lg = "5" md="12" style={{"height":"100vh"}} >
             <VerticalLine color="#ccc" width="2px" />
             <div className="header text-left" style={{ marginBottom: "6%" , marginLeft: 20}}>
-              <h4 style={{ marginBottom: "-20px", paddingBottom: 0, fontWeight: 400, letterSpacing: .15, color: "334572", fontFamily: "Helvetica" }}><icon></icon>Document Upload</h4>
+              <h4 style={{ marginBottom: "-20px", paddingBottom: 0, fontWeight: "bold", letterSpacing: .15, color: "334572", fontFamily: "Helvetica" }}><i className= "tim-icons icon-cloud-upload-94" style={{ color: "#334572", marginRight: 10, fontWeight: 600, fontSize:24}}></i>Document Upload</h4>
 
             </div>
             <Card className="card-tasks text-left" 

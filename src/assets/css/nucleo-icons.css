@@ -441,6 +441,9 @@ Created using IcoMoon - icomoon.io
 .icon-spaceship::before {
   content: "\ea4c";
 }
+.icon-spaceship2::before {
+  content: "\ea60";
+}
 
 .icon-square-pin::before {
   content: "\ea4d";
@@ -541,3 +544,7 @@ Created using IcoMoon - icomoon.io
 .icon-components::before {
   content: "\ea65";
 }
+.icon-components2::before {
+  content: "\ea66";
+}
+

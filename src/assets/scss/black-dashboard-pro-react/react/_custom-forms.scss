@@ -7,7 +7,7 @@
       height: 22px;
       width: 45px;
       border: none;
-      background-image:green;
+      background:rgb(25, 174, 202);
       background-position: center center;
       background-size: cover;
     }
@@ -20,7 +20,7 @@
   }
   .custom-control-input:checked {
     ~ .custom-control-label::before {
-      background-image: green
+      background: #525f7f;
     }
     ~ .custom-control-label::after {
       background-color: $white;

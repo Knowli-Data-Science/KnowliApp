@@ -50,7 +50,7 @@ import CustomTablePg from "views/components/CustomTablePg";
 import { IoFolderOutline } from "react-icons/io5";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThin, faEye } from '@fortawesome/free-solid-svg-icons'
-import icons from 'variables/icons';
+import icons from 'variables/icons.js';
 
 import ReactTable from "components/ReactTable/ReactTable.js"
 
@@ -93,14 +93,14 @@ const DocumentChat = () => {
         <Row >
           <Col md="8">
             <div className="header text-left" style={{marginLeft:"10%",marginBottom:0, marginTop:0 ,paddingTop:0}}>
-              <h4  style={{color:"#19AECA",fontWeight:'400', letterSpacing:.15,fontFamily:"Helvetica"}}><i className={"tim-icons " + icons[24].name} style={{color:"#19AECA",marginRight:10 , marginLeft:"-10%", fontWeight:400, letterSpacing:.15,}}/>  Document Chat</h4>
+              <h4  style={{color:"#19AECA",fontWeight:'bold', letterSpacing:.15,fontFamily:"Helvetica"}}><i className={"tim-icons " + icons[24].name} style={{color:"#19AECA",marginRight:10 , marginLeft:"-10%", fontWeight:600,  fontSize:24}}/>  Document Chat</h4>
             </div>
             <Card className="card-timeline card-plain scroll-column" style={{marginTop:0,paddingTop:0, height:"73vh"}}>
               <CardBody >
                 <ul className="timeline">
 
                   <li className="timeline-inverted">
-                    <div className="timeline-badge">
+                    <div className="timeline-badge">4
                       <i className="tim-icons icon-archive" />
                     </div>
                     <div className="timeline-panel" >
@@ -117,12 +117,16 @@ const DocumentChat = () => {
                           was a fun night all together ... The always rude Kanye
                           Show at 2am Sold Out Famous viewing @ Figueroa and
                           12th in downtown.
+                        
+                        
                         </p>
                       </div>
                       <h6>
                         <i className="ti-time" />
                         11 hours ago via FaceBook
                       </h6>
+                      <hr/>
+                      <i className={"tim-icons " + icons[71].name} style={{float: "right" ,color:"#ffffff", fontWeight:400, letterSpacing:.15,}}/>
                     </div>
                   </li>
                   <li >
@@ -171,39 +175,7 @@ const DocumentChat = () => {
                         </p>
                         <hr />
                       </div>
-                      <div className="timeline-footer">
-                        <UncontrolledDropdown>
-                          <DropdownToggle
-                            caret
-                            className="btn-round"
-                            color="info"
-                            data-toggle="dropdown"
-                            type="button"
-                          >
-                            <i className="tim-icons icon-settings-gear-63" />{" "}
-                          </DropdownToggle>
-                          <DropdownMenu>
-                            <DropdownItem
-                              href="#pablo"
-                              onClick={(e) => e.preventDefault()}
-                            >
-                              Action
-                            </DropdownItem>
-                            <DropdownItem
-                              href="#pablo"
-                              onClick={(e) => e.preventDefault()}
-                            >
-                              Another action
-                            </DropdownItem>
-                            <DropdownItem
-                              href="#pablo"
-                              onClick={(e) => e.preventDefault()}
-                            >
-                              Something else here
-                            </DropdownItem>
-                          </DropdownMenu>
-                        </UncontrolledDropdown>
-                      </div>
+                      <i className={"tim-icons " + icons[71].name} style={{float: "right" ,color:"#ffffff", fontWeight:400, letterSpacing:.15,}}/>
                     </div>
                   </li>
                   <li >
@@ -243,7 +215,7 @@ const DocumentChat = () => {
           </Col>
           <Col className="text-center document-display" md="4" >
           <div className="header text-left" style={{marginLeft:"10%",marginBottom:"6%"}}>
-          <h4 style={{marginBottom:"-20px", paddingBottom:10, marginLeft:-30, fontWeight:400, letterSpacing:.15, color:"334572",fontFamily:"Helvetica"}}><IoFolderOutline style={{marginRight:10}}/>Assistant Document Collection</h4>
+          <h4 style={{marginBottom:"-20px", paddingBottom:10, marginLeft:-30, fontWeight:"bold", letterSpacing:.15, color:"334572",fontFamily:"Helvetica"}}><IoFolderOutline fontWeight={600} fontSize={24} style={{marginRight:10, fontWeight:"bold"}}/>Assistant Document Collection</h4>
              
           </div>
             <Card className="card-tasks text-left" style={{background: `linear-gradient(to bottom, #344675 0%, #263148 100%)`,height:"45vh",borderBottomRightRadius:"15px"}}>
@@ -272,259 +244,7 @@ const DocumentChat = () => {
                 
               </CardHeader>
               <CardBody className="scroll-column"style={{borderBottomRightRadius:"50px"}}>
-                {/* <div className="table-responsive scroll-column" style={{borderBottomRightRadius:"50px"}}> */}
-                  {/* <Table Style={{borderBottomRightRadius:"50px"}} className="table-text">
-                    <th className="text-left" style={{color:'white'}}>DOCUMENT</th>
-                    <th className="text-center"style={{color:'white'}}>TYPE</th>
-                    <th style={{color:'white'}}>VIEW</th>
-                    <tbody>
-                      <tr>
-                        <td className="text-left" >
-                          <p style={{color:'white'}}>Florida State Wheelchair</p>
-                         
-                        </td>
-                        <td className="text-center">
-                          <p style={{color:'white'}}>PDF</p>
-                          
-                        </td>
-                        <td className="td-actions">
-                          <Button
-                            color="link"
-                            id="tooltip141118598"
-                            title=""
-                            type="button"
-                          >
-                            <FontAwesomeIcon icon={faEye} className="tim-icons"style={{color:"#ccc"}}/>
-                          </Button>
-                          <UncontrolledTooltip
-                            delay={0}
-                            target="tooltip141118598"
-                          >
-                            View
-                          </UncontrolledTooltip>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="text-left" >
-                          <p style={{color:'white', fontWeight:'100'}}>Florida State Wheelchair</p>
-                         
-                        </td>
-                        <td className="text-center">
-                          <p  style={{color:'white'}}>PDF</p>
-                          
-                        </td>
-                        <td className="td-actions">
-                          <Button
-                            color="link"
-                            id="tooltip141118598"
-                            title=""
-                            type="button"
-                          >
-                            <FontAwesomeIcon icon={faEye} className="tim-icons"style={{color:"#ccc"}}/>
-                          </Button>
-                          <UncontrolledTooltip
-                            delay={0}
-                            target="tooltip141118598"
-                          >
-                            View
-                          </UncontrolledTooltip>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="text-left" >
-                          <p style={{color:'white'}}>Florida State Wheelchair</p>
-                         
-                        </td>
-                        <td className="text-center">
-                          <p  style={{color:'white'}}>PDF</p>
-                          
-                        </td>
-                        <td className="td-actions">
-                          <Button
-                            color="link"
-                            id="tooltip141118598"
-                            title=""
-                            type="button"
-                          >
-                            <FontAwesomeIcon icon={faEye} className="tim-icons"style={{color:"#ccc"}}/>
-                          </Button>
-                          <UncontrolledTooltip
-                            delay={0}
-                            target="tooltip141118598"
-                          >
-                            View
-                          </UncontrolledTooltip>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="text-left" >
-                          <p style={{color:'white'}}>Florida State Wheelchair</p>
-                         
-                        </td>
-                        <td className="text-center">
-                          <p  style={{color:'white'}}>PDF</p>
-                          
-                        </td>
-                        <td className="td-actions">
-                          <Button
-                            color="link"
-                            id="tooltip141118598"
-                            title=""
-                            type="button"
-                          >
-                            <FontAwesomeIcon icon={faEye} className="tim-icons"style={{color:"#ccc"}}/>
-                          </Button>
-                          <UncontrolledTooltip
-                            delay={0}
-                            target="tooltip141118598"
-                          >
-                            View
-                          </UncontrolledTooltip>
-                        </td>
-                      </tr>
-                      <tr>
-
-                       
-                        <td className="text-left">
-                          <p  style={{color:'white'}}>Florida State Wheelchair</p>
-                         
-                        </td>
-                        <td className="text-center">
-                          <p  style={{color:'white'}}>PDF</p>
-                          
-                        </td>
-                        <td className="td-actions">
-                          <Button
-                            color="link"
-                            id="tooltip141118598"
-                            title=""
-                            type="button"
-                          >
-                            <FontAwesomeIcon icon={faEye} className="tim-icons" style={{color:"#ccc"}}/>
-                          </Button>
-                          <UncontrolledTooltip
-                            delay={0}
-                            target="tooltip141118598"
-                          >
-                            View
-                          </UncontrolledTooltip>
-                        </td>
-                      </tr>
-                      <tr>
-
-                       
-                        <td className="text-left">
-                          <p  style={{color:'white'}}>Florida State Wheelchair</p>
-                         
-                        </td>
-                        <td className="text-center">
-                          <p  style={{color:'white'}}>PDF</p>
-                          
-                        </td>
-                        <td className="td-actions">
-                          <Button
-                            color="link"
-                            id="tooltip141118598"
-                            title=""
-                            type="button"
-                          >
-                          <FontAwesomeIcon icon={faEye} className="tim-icons" style={{color:"#ccc"}} />
-                          </Button>
-                          <UncontrolledTooltip
-                            delay={0}
-                            target="tooltip141118598"
-                          >
-                            View
-                          </UncontrolledTooltip>
-                        </td>
-                      </tr>
-                      <tr>
-
-                       
-                        <td className="text-left">
-                          <p  style={{color:'white'}}>Florida State Wheelchair</p>
-                         
-                        </td>
-                        <td className="text-center">
-                          <p  style={{color:'white'}}>PDF</p>
-                          
-                        </td>
-                        <td className="td-actions">
-                          <Button
-                            color="link"
-                            id="tooltip141118598"
-                            title=""
-                            type="button"
-                          >
-                            <FontAwesomeIcon icon={faEye} className="tim-icons" style={{color:"#ccc"}} />
-                          </Button>
-                          <UncontrolledTooltip
-                            delay={0}
-                            target="tooltip141118598"
-                          >
-                            View
-                          </UncontrolledTooltip>
-                        </td>
-                      </tr>
-                      <tr>
-
-                       
-                        <td className="text-left">
-                          <p  style={{color:'white'}}>Florida State Wheelchair</p>
-                         
-                        </td>
-                        <td className="text-center">
-                          <p  style={{color:'white'}}>PDF</p>
-                          
-                        </td>
-                        <td className="td-actions">
-                          <Button
-                            color="link"
-                            id="tooltip141118598"
-                            title=""
-                            type="button"
-                          >
-                            <FontAwesomeIcon icon={faEye} className="tim-icons" style={{color:"#ccc"}} />
-                          </Button>
-                          <UncontrolledTooltip
-                            delay={0}
-                            target="tooltip141118598"
-                          >
-                            View
-                          </UncontrolledTooltip>
-                        </td>
-                      </tr>
-                      <tr>
-
-                       
-                        <td className="text-left">
-                          <p style={{color:'white'}}>Florida State Wheelchair</p>
-                         
-                        </td>
-                        <td className="text-center">
-                          <p style={{color:'white'}}>PDF</p>
-                          
-                        </td>
-                        <td className="td-actions">
-                          <Button
-                            color="link"
-                            id="tooltip141118598"
-                            title=""
-                            type="button"
-                          >
-                            <FontAwesomeIcon icon={faEye} className="tim-icons" style={{color:"#ccc"}} />
-                          </Button>
-                          <UncontrolledTooltip
-                            delay={0}
-                            target="tooltip141118598"
-                          >
-                            View
-                          </UncontrolledTooltip>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </Table> */}
-                {/* </div> */}
+       
                 <CustomTablePg columns={columns} data={data} searchTerm={searchTerm} />
               </CardBody>
             </Card>
@@ -537,40 +257,7 @@ const DocumentChat = () => {
                 <h6 className="d-inline text-center" style={{color:'white', opacity:.9,  fontSize:"14px", letterSpacing:'.11',fontWeight:300}}>REFERENCED DOCUMENTS</h6>
                 </Col>
   
-                <Col md="2">
-                <UncontrolledDropdown>
-                  <DropdownToggle
-                    aria-expanded={false}
-                    aria-haspopup={true}
-                    caret
-                    color="link"
-                    data-toggle="dropdown"
-                    id="dropdownMenuLink"
-                  >
-                    <i className="tim-icons icon-settings-gear-63" />
-                  </DropdownToggle>
-                  <DropdownMenu aria-labelledby="dropdownMenuLink" right>
-                    <DropdownItem
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      عم
-                    </DropdownItem>
-                    <DropdownItem
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      عمل آخر
-                    </DropdownItem>
-                    <DropdownItem
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      شيء آخر هنا
-                    </DropdownItem>
-                  </DropdownMenu>
-                </UncontrolledDropdown>
-                </Col>
+       
                 </Row>
               </CardHeader>
             <CardBody className="scroll-column"style={{borderBottomRightRadius:"50px"}}>

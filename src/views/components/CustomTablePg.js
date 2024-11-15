@@ -2,24 +2,22 @@ import { React, useState } from 'react';
 import { Table, Button, UncontrolledTooltip, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
-import { MdOutlineRemoveRedEye } from "react-icons/md";
+import { MdOutlineRemoveRedEye, MdClose } from "react-icons/md";
 import { registerables } from 'chart.js';
 
-const CustomTablePg = ({ columns, data, searchTerm, itemsPerPage = 4, borderColor="rgba(255,255,255,.2)"}) => {
+const CustomTablePg = ({ columns, data, setData, searchTerm, edit = false, itemsPerPage = 4,  borderColor="rgba(255,255,255,.2)"}) => {
+  const [tableData, setTableData] = useState(data); // Main dataset
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Calculate the total number of pages
-  
   // Filter data based on the search term
   const filteredData = searchTerm
-  ? data.filter(row =>
-      columns.some(col => {
-        const cellValue = row[col.field];
-        // Only perform search if cellValue is defined and not null
-        return cellValue != null && cellValue.toString().toLowerCase().includes(searchTerm.toLowerCase());
-      })
-    )
-  : data;
+    ? tableData.filter(row =>
+        columns.some(col => {
+          const cellValue = row[col.field];
+          return cellValue != null && cellValue.toString().toLowerCase().includes(searchTerm.toLowerCase());
+        })
+      )
+    : tableData;
 
   // Calculate total pages based on the filtered data length
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
@@ -29,12 +27,23 @@ const CustomTablePg = ({ columns, data, searchTerm, itemsPerPage = 4, borderColo
   const endIndex = startIndex + itemsPerPage;
   const currentData = filteredData.slice(startIndex, endIndex);
 
-
-
   // Handle page change
   const goToPage = (page) => {
     if (page > 0 && page <= totalPages) {
       setCurrentPage(page);
+    }
+  };
+
+  // Function to handle removing a row
+  const handleRemoveRow = (rowIndex) => {
+    // Remove row from the main data (tableData) by recalculating the filtered row index
+    const globalIndex = startIndex + rowIndex;
+    const updatedData = tableData.filter((_, index) => index !== globalIndex);
+    setTableData(updatedData);
+
+    // Adjust the current page if the last item on the page is deleted and it goes below the current page range
+    if (currentPage > Math.ceil(updatedData.length / itemsPerPage)) {
+      setCurrentPage(currentPage - 1);
     }
   };
 
@@ -81,6 +90,12 @@ const CustomTablePg = ({ columns, data, searchTerm, itemsPerPage = 4, borderColo
                   )}
                 </td>
               ))}
+              {edit && (<td style={{ textAlign: 'right' }}>
+                {/* "X" icon to remove row */}
+                <Button color="link" onClick={() => handleRemoveRow(rowIndex)}>
+                  <MdClose style={{ color: 'red', fontSize: '1.2em', opacity:.8 }} />
+                </Button>
+              </td>)}
             </tr>
           )) 
         ):(
